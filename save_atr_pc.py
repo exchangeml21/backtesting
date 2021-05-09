@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
-from gs_client import get_files
-from gs_client import download_blob
 from tqdm import tqdm
-from utils import round_x
 import time
 import os
+import math
+
+def round_x(x):
+    if np.isnan(x): return x
+    a = 0.05
+    return round(math.ceil(x / a)*a, 2)
 
 bucket_name = 'global_data_feed'
 #files = [file for file in get_files(bucket_name, 'processed_tick/') if file.endswith('h5')]
